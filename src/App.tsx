@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -10,10 +10,29 @@ import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
 import IntakeForm from './components/IntakeForm';
 import LanguageToggle from './components/LanguageToggle';
+import Survey from './components/Survey';
 
 function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [isIntakeOpen, setIsIntakeOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  if (currentPath === '/survey') {
+    return (
+      <LanguageProvider>
+        <Survey />
+      </LanguageProvider>
+    );
+  }
 
   return (
     <LanguageProvider>
