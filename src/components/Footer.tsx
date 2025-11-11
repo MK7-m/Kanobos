@@ -84,8 +84,8 @@ export default function Footer({ onBookConsultation, onGetQuote }: FooterProps) 
                 <Mail className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-white">Email</div>
-                  <a href="mailto:hello@kanobos.com" className="hover:text-emerald-400 transition-colors">
-                    hello@kanobos.com
+                  <a href="mailto:Kanobos@mail.com" className="hover:text-emerald-400 transition-colors">
+                    Kanobos@mail.com
                   </a>
                 </div>
               </li>
@@ -102,7 +102,7 @@ export default function Footer({ onBookConsultation, onGetQuote }: FooterProps) 
                 <MapPin className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-white">Location</div>
-                  <span>San Francisco, CA</span>
+                  <span>Amsterdam</span>
                 </div>
               </li>
             </ul>
