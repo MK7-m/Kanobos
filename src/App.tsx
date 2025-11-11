@@ -39,14 +39,16 @@ function App() {
     <LanguageProvider>
       <div className="min-h-screen bg-slate-900">
         <Header onBookConsultation={() => setIsBookingOpen(true)} />
-        <Hero
-          onBookConsultation={() => setIsBookingOpen(true)}
-          onGetQuote={handleGetQuote}
-        />
-        <Services />
-        <Process onGetQuote={handleGetQuote} />
-        <WhyChooseUs onGetQuote={handleGetQuote} />
-        <FAQ />
+        <main id="main-content" role="main">
+          <Hero
+            onBookConsultation={() => setIsBookingOpen(true)}
+            onGetQuote={handleGetQuote}
+          />
+          <Services />
+          <Process onGetQuote={handleGetQuote} />
+          <WhyChooseUs onGetQuote={handleGetQuote} />
+          <FAQ />
+        </main>
         <Footer
           onBookConsultation={() => setIsBookingOpen(true)}
           onGetQuote={handleGetQuote}
