@@ -153,7 +153,50 @@ export default function Survey() {
   if (submitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-20">
+              <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <span className="text-2xl font-bold text-white">
+                  Kano<span className="text-emerald-400">bos</span>
+                  <span className="text-emerald-400 text-lg align-super ml-0.5">✧</span>
+                </span>
+              </a>
+
+              <div className="flex items-center bg-slate-800 rounded-lg p-1">
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`px-3 py-1.5 rounded text-sm font-semibold transition-all duration-200 ${
+                    language === 'en'
+                      ? 'bg-emerald-500 text-white'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => setLanguage('nl')}
+                  className={`px-3 py-1.5 rounded text-sm font-semibold transition-all duration-200 ${
+                    language === 'nl'
+                      ? 'bg-emerald-500 text-white'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  NL
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl pt-32">
           <div className="bg-slate-800/80 backdrop-blur-sm rounded-2xl p-12 text-center border-2 border-emerald-500/30">
             <div className="w-20 h-20 bg-emerald-500/20 border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-10 h-10 text-emerald-400" />
@@ -176,18 +219,51 @@ export default function Survey() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-        <div className="bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border-2 border-emerald-500/30">
-          <div className="flex justify-end mb-6">
-            <button
-              onClick={() => setLanguage(language === 'en' ? 'nl' : 'en')}
-              className="flex items-center gap-2 px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 text-white rounded-lg transition-colors border border-slate-600"
-            >
-              <Globe className="w-5 h-5" />
-              <span>{language === 'en' ? 'Nederlands' : 'English'}</span>
-            </button>
-          </div>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="text-2xl font-bold text-white">
+                Kano<span className="text-emerald-400">bos</span>
+                <span className="text-emerald-400 text-lg align-super ml-0.5">✧</span>
+              </span>
+            </a>
 
+            <div className="flex items-center bg-slate-800 rounded-lg p-1">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1.5 rounded text-sm font-semibold transition-all duration-200 ${
+                  language === 'en'
+                    ? 'bg-emerald-500 text-white'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('nl')}
+                className={`px-3 py-1.5 rounded text-sm font-semibold transition-all duration-200 ${
+                  language === 'nl'
+                    ? 'bg-emerald-500 text-white'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                NL
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-24">
+        <div className="bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border-2 border-emerald-500/30">
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               {t('survey.title')}
