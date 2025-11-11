@@ -1,10 +1,13 @@
 import { Rocket } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface HeaderProps {
   onBookConsultation: () => void;
 }
 
 export default function Header({ onBookConsultation }: HeaderProps) {
+  const { language, setLanguage } = useLanguage();
+
   const handleGetStarted = () => {
     window.location.href = '/survey';
   };
@@ -23,12 +26,37 @@ export default function Header({ onBookConsultation }: HeaderProps) {
             </span>
           </div>
 
-          <button
-            onClick={handleGetStarted}
-            className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105"
-          >
-            Get Started
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center bg-slate-800 rounded-lg p-1">
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1.5 rounded text-sm font-semibold transition-all duration-200 ${
+                  language === 'en'
+                    ? 'bg-emerald-500 text-white'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage('nl')}
+                className={`px-3 py-1.5 rounded text-sm font-semibold transition-all duration-200 ${
+                  language === 'nl'
+                    ? 'bg-emerald-500 text-white'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                NL
+              </button>
+            </div>
+
+            <button
+              onClick={handleGetStarted}
+              className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105"
+            >
+              Get Started
+            </button>
+          </div>
         </div>
       </div>
     </header>

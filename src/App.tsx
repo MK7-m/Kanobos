@@ -8,7 +8,6 @@ import WhyChooseUs from './components/WhyChooseUs';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
-import LanguageToggle from './components/LanguageToggle';
 import Survey from './components/Survey';
 
 function App() {
@@ -40,7 +39,6 @@ function App() {
     <LanguageProvider>
       <div className="min-h-screen bg-slate-900">
         <Header onBookConsultation={() => setIsBookingOpen(true)} />
-        <LanguageToggle />
         <Hero
           onBookConsultation={() => setIsBookingOpen(true)}
           onGetQuote={handleGetQuote}
