@@ -73,7 +73,7 @@ const translations = {
     'results.metric4.label': 'Average revenue impact',
     'process.title': 'Our Proven 48-Hour Process',
     'process.subtitle': 'A streamlined workflow designed for speed without sacrificing quality.',
-    'process.step1.title': 'Discovery Call',
+    'process.step1.title': 'Discovery Call OR Survey Completion',
     'process.step1.duration': '30 minutes',
     'process.step1.desc': 'We discuss your business goals, target audience, and website requirements. You share your vision, and we provide expert recommendations.',
     'process.step2.title': 'Design & Planning',
