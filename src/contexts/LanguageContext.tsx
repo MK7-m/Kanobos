@@ -114,6 +114,12 @@ const translations = {
     'why.cta.subtitle': 'Fill out our quick form and receive a personalized quote within 24 hours.',
     'why.cta.button': 'Start Now',
     'why.cta.secondary': 'Request Quote',
+    'faq.badge': 'Got Questions?',
+    'faq.title': 'Frequently Asked Questions',
+    'faq.subtitle': 'Everything you need to know about our 48-hour website service.',
+    'faq.cta.title': 'Still have questions?',
+    'faq.cta.subtitle': "We're here to help! Book a free consultation to discuss your specific needs.",
+    'faq.cta.button': 'Talk to Our Team',
   },
   nl: {
     'hero.badge': 'Bedrijven online lanceren sinds 2020',
@@ -218,6 +224,12 @@ const translations = {
     'why.cta.subtitle': 'Vul ons snelle formulier in en ontvang binnen 24 uur een persoonlijke offerte op maat.',
     'why.cta.button': 'Start Nu Direct',
     'why.cta.secondary': 'Vraag Offerte Aan',
+    'faq.badge': 'Vragen?',
+    'faq.title': 'Veelgestelde Vragen',
+    'faq.subtitle': 'Alles wat u moet weten over onze 48-uur website service.',
+    'faq.cta.title': 'Nog vragen?',
+    'faq.cta.subtitle': 'We helpen u graag! Boek een gratis consult om uw specifieke behoeften te bespreken.',
+    'faq.cta.button': 'Neem Contact Op',
   },
 };
 

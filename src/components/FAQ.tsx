@@ -1,8 +1,28 @@
 import { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function FAQ() {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const mailtoLink = `mailto:Kanobos@mail.com?subject=Question from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    window.location.href = mailtoLink;
+
+    setSubmitSuccess(true);
+    setFormData({ name: '', email: '', message: '' });
+    setTimeout(() => {
+      setSubmitSuccess(false);
+      setIsSubmitting(false);
+    }, 3000);
+  };
 
   const faqs = [
     {
@@ -61,13 +81,13 @@ export default function FAQ() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-500/30 rounded-full px-4 py-2 mb-4">
             <HelpCircle className="w-5 h-5 text-emerald-400" />
-            <span className="text-emerald-400 font-semibold text-sm">Got Questions?</span>
+            <span className="text-emerald-400 font-semibold text-sm">{t('faq.badge')}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Frequently Asked Questions
+            {t('faq.title')}
           </h2>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Everything you need to know about our 48-hour website service.
+            {t('faq.subtitle')}
           </p>
         </div>
 
@@ -105,14 +125,64 @@ export default function FAQ() {
             ))}
           </div>
 
-          <div className="mt-12 text-center bg-slate-900/80 backdrop-blur-sm rounded-xl p-8 border-2 border-emerald-500/30">
-            <h3 className="text-2xl font-bold text-white mb-3">Still have questions?</h3>
-            <p className="text-slate-300 mb-6">
-              We're here to help! Book a free consultation to discuss your specific needs.
+          <div className="mt-12 bg-slate-900/80 backdrop-blur-sm rounded-xl p-8 border-2 border-emerald-500/30">
+            <h3 className="text-2xl font-bold text-white mb-3 text-center">{t('faq.cta.title')}</h3>
+            <p className="text-slate-300 mb-6 text-center">
+              {t('faq.cta.subtitle')}
             </p>
-            <button className="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105">
-              Talk to Our Team
-            </button>
+
+            {submitSuccess ? (
+              <div className="text-center py-6">
+                <div className="w-12 h-12 bg-emerald-500/20 border-2 border-emerald-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <p className="text-emerald-400 font-semibold">Message sent successfully!</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 bg-slate-800 border-2 border-slate-700 rounded-lg focus:border-emerald-500 focus:outline-none transition-colors text-white placeholder:text-slate-500"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      required
+                      placeholder="Your Email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 bg-slate-800 border-2 border-slate-700 rounded-lg focus:border-emerald-500 focus:outline-none transition-colors text-white placeholder:text-slate-500"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <textarea
+                    required
+                    placeholder="Your Question"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    rows={4}
+                    className="w-full px-4 py-3 bg-slate-800 border-2 border-slate-700 rounded-lg focus:border-emerald-500 focus:outline-none transition-colors resize-none text-white placeholder:text-slate-500"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : t('faq.cta.button')}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
