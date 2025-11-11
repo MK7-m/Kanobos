@@ -5,6 +5,10 @@ interface HeaderProps {
 }
 
 export default function Header({ onBookConsultation }: HeaderProps) {
+  const handleGetStarted = () => {
+    window.location.href = '/survey';
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +24,7 @@ export default function Header({ onBookConsultation }: HeaderProps) {
           </div>
 
           <button
-            onClick={onBookConsultation}
+            onClick={handleGetStarted}
             className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105"
           >
             Get Started

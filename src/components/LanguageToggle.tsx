@@ -5,7 +5,7 @@ export default function LanguageToggle() {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="fixed top-6 right-6 z-50">
+    <div className="fixed top-24 right-4 sm:top-6 sm:right-6 z-40">
       <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-lg shadow-lg px-3 py-2">
         <Globe className="w-4 h-4 text-slate-600" strokeWidth={2.5} />
         <button
