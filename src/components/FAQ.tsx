@@ -25,54 +25,18 @@ export default function FAQ() {
   };
 
   const faqs = [
-    {
-      question: 'How can you build a professional website in just 48 hours?',
-      answer: 'Our streamlined process and experienced team allow us to work efficiently without compromising quality. We use proven design templates that we customize to your brand, pre-built components for common features, and a dedicated workflow that eliminates back-and-forth delays. Plus, we focus exclusively on your project during those 48 hours.'
-    },
-    {
-      question: 'What happens if I need changes after the website is launched?',
-      answer: 'Every website includes 30 days of free revisions and support after launch. After that, we offer affordable maintenance packages starting at $99/month, or you can request changes on an as-needed basis. Minor content updates are typically included, while significant redesigns would be quoted separately.'
-    },
-    {
-      question: 'Do I need to provide content and images?',
-      answer: 'While having your content ready speeds up the process, we can help! We offer professional copywriting services and have access to premium stock photo libraries. If you have specific brand photos or content, that\'s great. If not, we\'ll work with what you have and fill in the gaps to ensure your site looks professional.'
-    },
-    {
-      question: 'Is hosting and domain registration included?',
-      answer: 'Yes! Your website includes one year of hosting on our high-performance servers with 99.9% uptime guarantee, SSL certificate for security, and automatic daily backups. Domain registration is separate and typically costs $12-15/year, which we can handle for you or you can purchase independently.'
-    },
-    {
-      question: 'Will my website work on mobile devices?',
-      answer: 'Absolutely! Every website we build is fully responsive and optimized for all devices - phones, tablets, laptops, and desktops. We test on multiple screen sizes and browsers to ensure a perfect experience for all your visitors. Mobile optimization is a standard part of our process, not an extra.'
-    },
-    {
-      question: 'What about SEO? Will people find my website on Google?',
-      answer: 'All our websites are built with SEO best practices from the ground up: fast loading speeds, clean code, proper meta tags, mobile optimization, and structured data. We also submit your site to Google and set up basic analytics. For ongoing SEO and content marketing, we offer optional monthly SEO packages.'
-    },
-    {
-      question: 'Can I update the website myself after it\'s built?',
-      answer: 'Yes! We can build your site on a user-friendly content management system (CMS) that allows you to make updates without technical knowledge. We provide training and documentation. Alternatively, we can handle all updates for you through our maintenance plans.'
-    },
-    {
-      question: 'What if I already have a website? Can you redesign it?',
-      answer: 'Definitely! We can redesign your existing website with our 48-hour service. We\'ll migrate your content, improve the design, enhance functionality, and ensure everything works perfectly. We can also keep your current domain and hosting if you prefer.'
-    },
-    {
-      question: 'Do you offer e-commerce functionality?',
-      answer: 'Yes, we can integrate e-commerce capabilities including product catalogs, shopping carts, and secure payment processing. Basic e-commerce sites (up to 50 products) fit within our standard 48-hour timeframe. Larger catalogs or complex requirements may need additional time, which we\'ll discuss upfront.'
-    },
-    {
-      question: 'What makes your service different from DIY website builders?',
-      answer: 'While DIY builders are great for some, they require significant time investment and often result in cookie-cutter designs. We provide a completely custom, professional website without you having to learn new tools or spend weeks building it yourself. Plus, you get expert design advice, professional optimization, and ongoing support.'
-    },
-    {
-      question: 'Is there a money-back guarantee?',
-      answer: 'Yes! If we don\'t deliver your website within 48 hours (excluding revisions), you\'ll receive a full refund. Additionally, if you\'re not satisfied with the initial design, we\'ll work with you through unlimited revisions during the first 30 days until you love it.'
-    },
-    {
-      question: 'How do I get started?',
-      answer: 'Simply book a free 30-minute strategy call or fill out our quick quote form. We\'ll discuss your needs, show you examples, answer questions, and if you\'re ready to move forward, we can start immediately. Payment is 50% upfront and 50% upon delivery of your completed website.'
-    }
+    { question: t('faq.q1'), answer: t('faq.a1') },
+    { question: t('faq.q2'), answer: t('faq.a2') },
+    { question: t('faq.q3'), answer: t('faq.a3') },
+    { question: t('faq.q4'), answer: t('faq.a4') },
+    { question: t('faq.q5'), answer: t('faq.a5') },
+    { question: t('faq.q6'), answer: t('faq.a6') },
+    { question: t('faq.q7'), answer: t('faq.a7') },
+    { question: t('faq.q8'), answer: t('faq.a8') },
+    { question: t('faq.q9'), answer: t('faq.a9') },
+    { question: t('faq.q10'), answer: t('faq.a10') },
+    { question: t('faq.q11'), answer: t('faq.a11') },
+    { question: t('faq.q12'), answer: t('faq.a12') },
   ];
 
   return (
