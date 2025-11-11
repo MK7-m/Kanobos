@@ -8,13 +8,11 @@ import WhyChooseUs from './components/WhyChooseUs';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import BookingModal from './components/BookingModal';
-import IntakeForm from './components/IntakeForm';
 import LanguageToggle from './components/LanguageToggle';
 import Survey from './components/Survey';
 
 function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [isIntakeOpen, setIsIntakeOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
   useEffect(() => {
@@ -25,6 +23,10 @@ function App() {
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  const handleGetQuote = () => {
+    window.location.href = '/survey';
+  };
 
   if (currentPath === '/survey') {
     return (
@@ -41,25 +43,20 @@ function App() {
         <LanguageToggle />
         <Hero
           onBookConsultation={() => setIsBookingOpen(true)}
-          onGetQuote={() => setIsIntakeOpen(true)}
+          onGetQuote={handleGetQuote}
         />
         <Services />
-        <Process onGetQuote={() => setIsIntakeOpen(true)} />
-        <WhyChooseUs onGetQuote={() => setIsIntakeOpen(true)} />
+        <Process onGetQuote={handleGetQuote} />
+        <WhyChooseUs onGetQuote={handleGetQuote} />
         <FAQ />
         <Footer
           onBookConsultation={() => setIsBookingOpen(true)}
-          onGetQuote={() => setIsIntakeOpen(true)}
+          onGetQuote={handleGetQuote}
         />
 
         <BookingModal
           isOpen={isBookingOpen}
           onClose={() => setIsBookingOpen(false)}
-        />
-
-        <IntakeForm
-          isOpen={isIntakeOpen}
-          onClose={() => setIsIntakeOpen(false)}
         />
       </div>
     </LanguageProvider>
