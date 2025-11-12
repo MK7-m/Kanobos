@@ -92,8 +92,8 @@ export default function Hero({ onBookConsultation, onGetQuote }: HeroProps) {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <button
-              onClick={onBookConsultation}
-              className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/50 hover:scale-105"
+              onClick={onGetQuote}
+              className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,185,129,0.6),0_0_60px_rgba(20,184,166,0.4),0_0_90px_rgba(16,185,129,0.2)] hover:[text-shadow:_0_0_10px_rgba(255,255,255,0.8)]"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {t('hero.cta.primary')}
@@ -102,7 +102,7 @@ export default function Hero({ onBookConsultation, onGetQuote }: HeroProps) {
             </button>
 
             <button
-              onClick={onGetQuote}
+              onClick={onBookConsultation}
               className="px-8 py-4 bg-slate-800/80 backdrop-blur-sm text-white font-semibold rounded-lg border-2 border-slate-700 hover:border-emerald-500 transition-all duration-300 hover:bg-slate-700"
             >
               {t('hero.cta.secondary')}
