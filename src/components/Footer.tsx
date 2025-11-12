@@ -3,10 +3,18 @@ import { Rocket, Mail, Phone, MapPin, Clock } from 'lucide-react';
 interface FooterProps {
   onBookConsultation: () => void;
   onGetQuote: () => void;
+  onShowSurvey?: () => void;
 }
 
-export default function Footer({ onBookConsultation, onGetQuote }: FooterProps) {
+export default function Footer({ onBookConsultation, onGetQuote, onShowSurvey }: FooterProps) {
   const currentYear = new Date().getFullYear();
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <footer className="bg-slate-900 text-white">
@@ -56,24 +64,72 @@ export default function Footer({ onBookConsultation, onGetQuote }: FooterProps) 
           <div>
             <h3 className="text-lg font-bold mb-4">Services</h3>
             <ul className="space-y-3 text-slate-400">
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">Website Design</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">Website Development</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">SEO Optimization</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">Website Hosting</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">Website Maintenance</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">E-commerce Solutions</li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="hover:text-emerald-400 transition-colors text-left">
+                  Website Design
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="hover:text-emerald-400 transition-colors text-left">
+                  Website Development
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="hover:text-emerald-400 transition-colors text-left">
+                  SEO Optimization
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="hover:text-emerald-400 transition-colors text-left">
+                  Website Hosting
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="hover:text-emerald-400 transition-colors text-left">
+                  Website Maintenance
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('services')} className="hover:text-emerald-400 transition-colors text-left">
+                  E-commerce Solutions
+                </button>
+              </li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-3 text-slate-400">
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">About Us</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">Portfolio</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">Pricing</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">FAQ</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">Blog</li>
-              <li className="hover:text-emerald-400 transition-colors cursor-pointer">Contact</li>
+              <li>
+                <button onClick={() => scrollToSection('why-choose-us')} className="hover:text-emerald-400 transition-colors text-left">
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('portfolio')} className="hover:text-emerald-400 transition-colors text-left">
+                  Portfolio
+                </button>
+              </li>
+              <li>
+                <button onClick={onGetQuote} className="hover:text-emerald-400 transition-colors text-left">
+                  Pricing
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('faq')} className="hover:text-emerald-400 transition-colors text-left">
+                  FAQ
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection('testimonials')} className="hover:text-emerald-400 transition-colors text-left">
+                  Blog
+                </button>
+              </li>
+              <li>
+                <button onClick={onBookConsultation} className="hover:text-emerald-400 transition-colors text-left">
+                  Contact
+                </button>
+              </li>
             </ul>
           </div>
 

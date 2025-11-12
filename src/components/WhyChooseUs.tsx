@@ -47,7 +47,7 @@ export default function WhyChooseUs({ onGetQuote }: WhyChooseUsProps) {
   ];
 
   return (
-    <section className="py-20 bg-slate-900 relative overflow-hidden">
+    <section id="why-choose-us" className="py-20 bg-slate-900 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
