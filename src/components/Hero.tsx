@@ -45,7 +45,7 @@ export default function Hero({ onBookConsultation, onGetQuote }: HeroProps) {
 
               <div className="relative z-10 flex flex-col items-center gap-3">
                 <div className="flex items-baseline gap-3">
-                  <span className="text-lg font-medium text-emerald-300">{t('hero.price.label')}</span>
+                  <span className="text-2xl md:text-3xl font-medium text-emerald-300">{t('hero.price.label')}</span>
                   <div className="text-5xl md:text-6xl font-bold text-white tracking-tight drop-shadow-lg">
                     {t('hero.price')}
                   </div>
