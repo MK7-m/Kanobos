@@ -18,6 +18,10 @@ export default function Footer({ onBookConsultation, onGetQuote, onShowSurvey }:
     }
   };
 
+  const handleLogoClick = () => {
+    window.location.href = '/';
+  };
+
   return (
     <footer className="bg-slate-900 text-white">
       <div className="bg-gradient-to-r from-emerald-500 to-teal-600 py-16">
@@ -48,12 +52,15 @@ export default function Footer({ onBookConsultation, onGetQuote, onShowSurvey }:
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
-            <div className="flex items-center gap-2 mb-4">
+            <button
+              onClick={handleLogoClick}
+              className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity cursor-pointer"
+            >
               <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
                 <Rocket className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold">Kano<span className="text-emerald-400">bos</span><span className="text-emerald-400 text-lg align-super ml-0.5">✧</span></span>
-            </div>
+            </button>
             <p className="text-slate-400 mb-6">
               {t('footer.description')}
             </p>
