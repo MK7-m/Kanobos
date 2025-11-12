@@ -76,3 +76,7 @@
     transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
   }
 }
+
+.obj-slow {
+  animation: rotate3d 30s linear infinite;
+}
