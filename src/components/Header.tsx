@@ -6,7 +6,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onBookConsultation }: HeaderProps) {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
 
   const handleGetStarted = () => {
     window.location.href = '/survey';
@@ -54,7 +54,7 @@ export default function Header({ onBookConsultation }: HeaderProps) {
               onClick={handleGetStarted}
               className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-500/50 transition-all duration-300 hover:scale-105"
             >
-              Get Started
+              {t('header.get_started')}
             </button>
           </div>
         </div>
