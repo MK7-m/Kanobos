@@ -24,8 +24,8 @@ export const seoConfig = {
   linkedIn: 'https://www.linkedin.com/company/kanobos',
   email: 'info@kanobos.com',
   phone: '+31-XXX-XXXXXX',
-  locale: 'en_US',
-  alternateLocale: 'nl_NL',
+  locale: 'nl_NL',
+  alternateLocale: 'en_US',
   ogImage: {
     url: 'https://kanobos.com/og-image.jpg',
     width: 1200,

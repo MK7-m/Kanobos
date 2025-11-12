@@ -542,7 +542,7 @@ const translations = {
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('nl');
 
   const t = (key: string): string => {
     return translations[language][key] || key;
