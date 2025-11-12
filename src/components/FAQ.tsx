@@ -13,7 +13,7 @@ export default function FAQ() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const mailtoLink = `mailto:Kanobos@mail.com?subject=Question from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    const mailtoLink = `mailto:info@kanobos.nl?subject=Question from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
     window.location.href = mailtoLink;
 
     setSubmitSuccess(true);

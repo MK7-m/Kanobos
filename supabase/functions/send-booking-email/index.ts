@@ -8,8 +8,8 @@ const corsHeaders = {
 
 const MAILGUN_API_KEY = Deno.env.get('MAILGUN_API_KEY');
 const MAILGUN_DOMAIN = Deno.env.get('MAILGUN_DOMAIN');
-const FROM_EMAIL = Deno.env.get('MAILGUN_FROM_EMAIL') || 'Kanobos <noreply@kanobos.com>';
-const TO_EMAIL = Deno.env.get('MAILGUN_TO_EMAIL') || 'Kanobos@mail.com';
+const FROM_EMAIL = Deno.env.get('MAILGUN_FROM_EMAIL') || 'Kanobos <noreply@kanobos.nl>';
+const TO_EMAIL = Deno.env.get('MAILGUN_TO_EMAIL') || 'info@kanobos.nl';
 
 interface BookingEmailPayload {
   name: string;
@@ -145,7 +145,7 @@ Deno.serve(async (req: Request) => {
               </ul>
 
               <p style="margin-top: 30px;"><strong>Need to reschedule or have questions?</strong><br>
-              Contact us at <a href="mailto:Kanobos@mail.com" style="color: #059669;">Kanobos@mail.com</a></p>
+              Contact us at <a href="mailto:info@kanobos.nl" style="color: #059669;">info@kanobos.nl</a></p>
 
               <div class="footer">
                 We look forward to speaking with you!<br>

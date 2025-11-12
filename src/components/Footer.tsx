@@ -140,8 +140,8 @@ export default function Footer({ onBookConsultation, onGetQuote, onShowSurvey }:
                 <Mail className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-white">Email</div>
-                  <a href="mailto:Kanobos@mail.com" className="hover:text-emerald-400 transition-colors">
-                    Kanobos@mail.com
+                  <a href="mailto:info@kanobos.nl" className="hover:text-emerald-400 transition-colors">
+                    info@kanobos.nl
                   </a>
                 </div>
               </li>
