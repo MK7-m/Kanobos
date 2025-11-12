@@ -36,16 +36,48 @@ export default function Hero({ onBookConsultation, onGetQuote }: HeroProps) {
             {t('hero.subtitle')}
           </p>
 
-          <div className="inline-flex flex-col items-center gap-3 mb-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-2xl">
-            <span className="text-sm font-semibold text-emerald-400 tracking-wider uppercase">
-              {t('hero.price.label')}
-            </span>
-            <div className="text-6xl md:text-7xl font-bold text-white tracking-tight">
-              {t('hero.price')}
+          <div className="relative inline-flex flex-col items-center gap-4 mb-12 group">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 via-teal-400/20 to-cyan-400/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500"></div>
+
+            <div className="relative bg-gradient-to-br from-white/15 via-white/10 to-white/5 backdrop-blur-xl border border-white/30 rounded-3xl p-8 shadow-2xl overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-50"></div>
+              <div className="absolute bottom-0 right-0 w-3/4 h-3/4 bg-gradient-to-tl from-emerald-400/10 via-transparent to-transparent rounded-full blur-3xl"></div>
+
+              <div className="relative z-10 flex flex-col items-center gap-3">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-lg font-medium text-emerald-300">{t('hero.price.label')}</span>
+                  <div className="text-5xl md:text-6xl font-bold text-white tracking-tight drop-shadow-lg">
+                    {t('hero.price')}
+                  </div>
+                </div>
+
+                <div className="h-px w-20 bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent my-1"></div>
+
+                <div className="text-center space-y-2">
+                  <p className="text-lg font-semibold text-white drop-shadow">
+                    {t('hero.price.subtext')}
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2 text-sm text-emerald-200/90">
+                    <span className="inline-flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      {t('hero.price.includes1')}
+                    </span>
+                    <span className="text-emerald-400/50">•</span>
+                    <span className="inline-flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      {t('hero.price.includes2')}
+                    </span>
+                    <span className="text-emerald-400/50">•</span>
+                    <span className="inline-flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      {t('hero.price.includes3')}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute -bottom-px left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
             </div>
-            <span className="text-slate-300 font-medium">
-              {t('hero.price.subtext')}
-            </span>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
