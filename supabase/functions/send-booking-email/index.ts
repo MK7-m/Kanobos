@@ -6,10 +6,9 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const MAILGUN_API_KEY = Deno.env.get('MAILGUN_API_KEY');
-const MAILGUN_DOMAIN = Deno.env.get('MAILGUN_DOMAIN');
-const FROM_EMAIL = Deno.env.get('MAILGUN_FROM_EMAIL') || 'Kanobos <noreply@kanobos.nl>';
-const TO_EMAIL = Deno.env.get('MAILGUN_TO_EMAIL') || 'info@kanobos.nl';
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+const FROM_EMAIL = Deno.env.get('RESEND_FROM_EMAIL') || 'Kanobos <noreply@kanobos.nl>';
+const TO_EMAIL = Deno.env.get('RESEND_TO_EMAIL') || 'info@kanobos.nl';
 
 interface BookingEmailPayload {
   name: string;
@@ -51,8 +50,8 @@ Deno.serve(async (req: Request) => {
     const appointmentDate = formatDate(payload.appointment_date);
     const appointmentTime = formatTime(payload.appointment_time);
 
-    if (!MAILGUN_API_KEY || !MAILGUN_DOMAIN) {
-      throw new Error('MAILGUN_API_KEY or MAILGUN_DOMAIN is not configured');
+    if (!RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY is not configured');
     }
 
     const adminEmailHtml = `
@@ -158,20 +157,21 @@ Deno.serve(async (req: Request) => {
     `;
 
     const emailResults = [];
-    const mailgunUrl = `https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages`;
 
-    const adminFormData = new URLSearchParams();
-    adminFormData.append('from', FROM_EMAIL);
-    adminFormData.append('to', TO_EMAIL);
-    adminFormData.append('subject', `✧ New Booking: ${payload.name} - ${appointmentDate}`);
-    adminFormData.append('html', adminEmailHtml);
+    const adminEmailPayload = {
+      from: FROM_EMAIL,
+      to: TO_EMAIL,
+      subject: `✧ New Booking: ${payload.name} - ${appointmentDate}`,
+      html: adminEmailHtml,
+    };
 
-    const adminEmailResponse = await fetch(mailgunUrl, {
+    const adminEmailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Basic ${btoa(`api:${MAILGUN_API_KEY}`)}`,
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
       },
-      body: adminFormData,
+      body: JSON.stringify(adminEmailPayload),
     });
 
     const adminResult = await adminEmailResponse.json();
@@ -183,20 +183,22 @@ Deno.serve(async (req: Request) => {
       result: adminResult
     });
 
-    const clientFormData = new URLSearchParams();
-    clientFormData.append('from', FROM_EMAIL);
-    clientFormData.append('to', payload.email);
-    clientFormData.append('subject', '✧ Your Kanobos Strategy Call is Confirmed');
-    clientFormData.append('html', clientEmailHtml);
+    const clientEmailPayload = {
+      from: FROM_EMAIL,
+      to: payload.email,
+      subject: '✧ Your Kanobos Strategy Call is Confirmed',
+      html: clientEmailHtml,
+    };
 
     console.log('Attempting to send client email to:', payload.email);
 
-    const clientEmailResponse = await fetch(mailgunUrl, {
+    const clientEmailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Basic ${btoa(`api:${MAILGUN_API_KEY}`)}`,
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
       },
-      body: clientFormData,
+      body: JSON.stringify(clientEmailPayload),
     });
 
     const clientResult = await clientEmailResponse.json();

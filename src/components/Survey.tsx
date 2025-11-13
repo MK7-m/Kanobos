@@ -141,6 +141,29 @@ export default function Survey() {
 
       if (error) throw error;
 
+      try {
+        const emailApiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-survey-notification`;
+        const emailResponse = await fetch(emailApiUrl, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            surveyData: formData
+          })
+        });
+
+        const emailResult = await emailResponse.json();
+        console.log('Survey email send result:', emailResult);
+
+        if (!emailResponse.ok) {
+          console.error('Survey email sending failed:', emailResult);
+        }
+      } catch (emailError) {
+        console.error('Survey email notification failed:', emailError);
+      }
+
       setSubmitted(true);
     } catch (error) {
       console.error('Error submitting survey:', error);

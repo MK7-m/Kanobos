@@ -6,10 +6,9 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const MAILGUN_API_KEY = Deno.env.get('MAILGUN_API_KEY');
-const MAILGUN_DOMAIN = Deno.env.get('MAILGUN_DOMAIN');
-const FROM_EMAIL = Deno.env.get('MAILGUN_FROM_EMAIL') || 'Kanobos <noreply@kanobos.nl>';
-const TO_EMAIL = Deno.env.get('MAILGUN_TO_EMAIL') || 'info@kanobos.nl';
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+const FROM_EMAIL = Deno.env.get('RESEND_FROM_EMAIL') || 'Kanobos <noreply@kanobos.nl>';
+const TO_EMAIL = Deno.env.get('RESEND_TO_EMAIL') || 'info@kanobos.nl';
 
 interface SurveyData {
   name: string;
@@ -40,8 +39,8 @@ Deno.serve(async (req: Request) => {
   try {
     const { surveyData }: { surveyData: SurveyData } = await req.json();
 
-    if (!MAILGUN_API_KEY || !MAILGUN_DOMAIN) {
-      console.warn('Mailgun not configured, logging survey data only');
+    if (!RESEND_API_KEY) {
+      console.warn('Resend not configured, logging survey data only');
       console.log('Survey data:', surveyData);
 
       return new Response(
@@ -137,26 +136,27 @@ Deno.serve(async (req: Request) => {
       </html>
     `;
 
-    const mailgunUrl = `https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages`;
-    const formData = new URLSearchParams();
-    formData.append('from', FROM_EMAIL);
-    formData.append('to', TO_EMAIL);
-    formData.append('subject', `✧ New Survey: ${surveyData.name}${surveyData.business_name ? ` - ${surveyData.business_name}` : ''}`);
-    formData.append('html', emailHtml);
+    const emailPayload = {
+      from: FROM_EMAIL,
+      to: TO_EMAIL,
+      subject: `✧ New Survey: ${surveyData.name}${surveyData.business_name ? ` - ${surveyData.business_name}` : ''}`,
+      html: emailHtml,
+    };
 
-    const emailResponse = await fetch(mailgunUrl, {
+    const emailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Basic ${btoa(`api:${MAILGUN_API_KEY}`)}`,
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
       },
-      body: formData,
+      body: JSON.stringify(emailPayload),
     });
 
     const result = await emailResponse.json();
     console.log('Survey email response:', { status: emailResponse.status, ok: emailResponse.ok, result });
 
     if (!emailResponse.ok) {
-      throw new Error(`Mailgun API error: ${JSON.stringify(result)}`);
+      throw new Error(`Resend API error: ${JSON.stringify(result)}`);
     }
 
     return new Response(
